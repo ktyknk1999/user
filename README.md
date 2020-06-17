@@ -1,1 +1,1 @@
-# user
+before opening the files, extract the icon folder from the icon.zip file and place the icon folder in the same folder with the other .html, .css and .js file as the path of the icon is given as icons\'imagename'.
