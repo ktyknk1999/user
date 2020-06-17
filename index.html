@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Responsive Side Navigation Bar</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".hamburger").click(function(){
+			   $(".wrapper").toggleClass("collapse");
+			});
+		});
+	</script>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="top_navbar">
+    <div class="hamburger">
+       <div class="one"></div>
+       <div class="two"></div>
+       <div class="three"></div>
+    </div>
+    <div class="top_menu">
+      <div class="logo"><img src="icons/company_logo.png" alt="image not found"></div>
+
+      
+      	<font style="" class="headfont"> Account Settings</font>
+      	<ul>     
+          <li><a href="#">
+          <i class="fas fa-user" title="Account"></i>
+          </a></li>
+      	</ul>
+     
+
+
+    </div>
+  </div>
+  
+  <div class="sidebar">
+      <ul>
+        <li><a href="#">
+          <span class="icon"><i class="fas fa-search" title="Search"></i></span>
+          
+        <li><a href="#">
+          <span class="icon"><i class="fas fa-home" title="Home"></i></span>
+          
+          </a></li>
+        <li><a href="#">
+          <span class="icon"><i class="fa fa-area-chart" title="Stats"></i></span>
+          
+          </a></li>
+        <li><a href="#" >
+          <span class="icon"><i class="material-icons" title="Group">group</i></span>
+          
+          </a></li>
+        <li><a href="#">
+          <span class="icon"><i class="material-icons" title="Settings">settings</i></span>
+          
+          </a></li>
+    </ul>
+  </div>
+  
+  <div class="main_container">
+    <div class="item">
+      <b>User List</b>
+    </div>
+    <div class="item">
+      <form>
+            <input type="text" class="search" name="search" placeholder="Search" autocomplete="off" >
+      </form>
+    </div>
+    <div class="item" style="overflow:hidden; max-heigth:10px;"  >
+        <table class="list" id="userlist"  >
+
+                    <thead>
+                        <tr>
+                            <th title="User">User</th>
+                            <th title="Role">Role</th>
+                            <th title="Action">Action</th>
+                            <th style="display:none;">Email</th>
+                            <th style="display:none;">First Name</th>
+                            <th style="display:none;">Last Name</th>                            
+                        </tr>
+                    
+	            </thead>
+	            <tbody >
+                    
+		    </tbody>
+                </table>
+    </div>
+    <div class="item">
+      
+      <form id="form1" onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+          <div class="sidebyside"><p>New User Details</p><br><hr>
+
+                    <div>
+                        
+                        <input type="text" name="username" id="username" placeholder="   Username" title="Username" class="leftbox">
+                    </div>
+
+                    <div>
+                        
+                        <input type="text" name="email" id="email" placeholder="   Email" title="Email" class="rightbox">
+                    </div>
+                    <div>
+                        
+                        <input type="text" name="fname" id="fname" placeholder="   First Name" title="First Name" class="leftbox">
+                    </div>
+                    <div>
+                        
+                        <input type="text" name="lname" id="lname" placeholder="   Last Name" title="Last Name" class="rightbox">
+                    </div>
+                    <div>
+                        <select id="role" name="role" class="leftbox" data-live-search="true" > 
+                               <option value="">---Role---</option>
+                               <option value="Admin"> Admin</option>
+                               <option value="Developer"> Developer</option>
+                               <option value="Manager"> Manager</option>
+                               <option value="QA"> QA</option>
+                         </select>   
+                    </div>
+                    <div class= "cnfbox">
+                          <input type="checkbox" id="confirmation" name="confirmation" value="confirmation">
+                               <label>Send Email confirmation</label>
+                    </div>
+
+          
+          </div>
+
+          <div class="sidebysidetwo"></p>Profile Picture</p><br><hr>
+              <div class="sidetwo">
+                 <img src="icons\defaulticon.png" class="dicon">
+                 <img id="blah" src="#" class="imageup">
+                
+              </div>
+	      <div class="arngupload">
+		      <label for="imgInp" class="custom-file-upload btn btn-primary">Select Image</label>
+      	              <input class="margin" type="file" formnovalidate id="imgInp" name="file" accept="image/jpg, image/jpeg, image/png">
+              </div>
+          </div>
+          <br>
+          <div class="btnline" style="width:100%;">
+              <hr>
+          </div>
+          <div>
+               <button type="submit" class="submitbtn" id="validate">Add User</button>
+               <button class="cancelbtn" onClick="">Cancel</button>
+		 <h2 id='result'></h2>
+          </div>
+
+
+
+      </form>
+     
+    </div> 
+
+
+
+
+
+    
+
+
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="script.js">
+</script>
+
+
+<script>
+
+
+
+
+$("#inpt_search").on('focus', function () {
+	$(this).parent('label').addClass('active');
+});
+
+$("#inpt_search").on('blur', function () {
+	if($(this).val().length == 0)
+		$(this).parent('label').removeClass('active');
+});
+
+
+var uploadField = document.getElementById("imgInp");
+uploadField.onchange = function() {
+    if(this.files[0].size > 1048576){
+       alert("File is too big!\n * file must be under 1MB size!!");
+       this.value = "";
+	
+    };
+};
+
+
+
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+$("#imgInp").change(function() {
+ readURL(this);
+});
+	
+
+     
+		
+	
+      
+
+
+
+</script>
+	
+</body>
+</html>
